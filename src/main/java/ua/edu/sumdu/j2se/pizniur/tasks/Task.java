@@ -82,14 +82,14 @@ public class Task {
     }
 
     /**
-     * Якщо задача повторювана, метод перетворює її на неповторювану
+     * Якщо задача повторювана, метод перетворює її на неповторювану задачу
      * @param time - новий час виконання задачі.
      */
     public void setTime(int time){
+        this.time = time;
         interval = 0;
         start = 0;
         end = 0;
-        this.time = time;
     }
 
     /**
