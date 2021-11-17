@@ -161,7 +161,7 @@ public class Task {
         } else if (current + interval > end) {
             nextTime = -1;
         } else if (current < end) {
-            for (int i = 1; (nextTime) <= current; i++) {
+            for (int i = 1; nextTime <= current; i++) {
                 nextTime = start + interval * i;
             }
         } else {
