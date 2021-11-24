@@ -40,7 +40,12 @@ public class ArrayTaskList {
 
     // метод, що повертає задачу
     public Task getTask(int index){
-        return tasks[index];
+
+        if (index > tasks.length - 1) {
+            throw new IndexOutOfBoundsException("Невірне значення індексу");
+        }else {
+            return tasks[index];
+        }
     }
 
     public ArrayTaskList incoming(int from, int to){

@@ -21,6 +21,7 @@ public class Task {
      * @param time      заданий час
      */
     public Task(String title, int time){
+        if (time < 0) throw new IllegalArgumentException("Час не може бути від’ємним");
         this.title = title;
         this.time = time;
     }
@@ -33,6 +34,9 @@ public class Task {
      * @param interval  інтервал повторення задачі
      */
     public Task(String title, int start, int end, int interval){
+        if ((start < 0)||(end < 0)||(interval <= 0)) {
+            throw new IllegalArgumentException("Час не може бути від’ємним");
+        }
         this.title = title;
         this.start = start;
         this.end = end;
