@@ -21,6 +21,7 @@ public class Task {
      * @param time      заданий час
      */
     public Task(String title, int time){
+        if (time < 0) throw new IllegalArgumentException("Час не може бути від’ємним");
         this.title = title;
         this.time = time;
     }
@@ -33,6 +34,9 @@ public class Task {
      * @param interval  інтервал повторення задачі
      */
     public Task(String title, int start, int end, int interval){
+        if ((start < 0)||(end < 0)||(interval <= 0)) {
+            throw new IllegalArgumentException("Час не може бути від’ємним");
+        }
         this.title = title;
         this.start = start;
         this.end = end;
@@ -82,14 +86,14 @@ public class Task {
     }
 
     /**
-     * Якщо задача повторювана, метод перетворює її на неповторювану
+     * Якщо задача повторювана, метод перетворює її на неповторювану задачу
      * @param time - новий час виконання задачі.
      */
     public void setTime(int time){
+        this.time = time;
         interval = 0;
         start = 0;
         end = 0;
-        this.time = time;
     }
 
     /**
@@ -161,7 +165,7 @@ public class Task {
         } else if (current + interval > end) {
             nextTime = -1;
         } else if (current < end) {
-            for (int i = 1; (nextTime) <= current; i++) {
+            for (int i = 1; nextTime <= current; i++) {
                 nextTime = start + interval * i;
             }
         } else {
